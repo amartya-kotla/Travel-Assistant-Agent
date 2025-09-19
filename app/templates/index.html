@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Travel Agent Assistant</title>
+</head>
+<body>
+    <h1>Travel Agent Assistant</h1>
+    <div id="chat-box">
+        {% if state %}
+            {% for message in state.chat_history %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <form method="post" action="/">
+        <input type="hidden" name="state" value="{{json_state}}">
+        <input type="text" name="user_prompt" placeholder="e.g., I want to travel from Paris to Rome." style="width: 400px;">
+        <button type="submit">Send</button>
+    </form>
+</body>
+</html>
